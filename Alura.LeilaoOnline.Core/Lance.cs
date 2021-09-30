@@ -2,7 +2,8 @@
 
 namespace Alura.LeilaoOnline.Core
 {
-    public class Lance : IComparable
+    //public class Lance : IComparable
+    public class Lance
     {
         public Interessada Cliente { get; }
         public double Valor { get; }
@@ -14,14 +15,14 @@ namespace Alura.LeilaoOnline.Core
         }
 
         //Método criado para comparar valores em uma lista
-        public int CompareTo(object obj)
-        {
-            if (!(obj is Lance))
-            {
-                throw new Exception("Valor inválido");
-            }
-            Lance other = obj as Lance;
-            return Valor.CompareTo(other.Valor);
-        }
+        //public int CompareTo(object obj)
+        //{
+        //    if (!(obj is Lance))
+        //    {
+        //        throw new Exception("Valor inválido");
+        //    }
+        //    Lance other = obj as Lance;
+        //    return Valor.CompareTo(other.Valor);
+        //}
     }
 }
