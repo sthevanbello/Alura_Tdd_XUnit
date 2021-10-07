@@ -8,6 +8,60 @@ namespace Alura.LeilaoOnline.Tests
 {
     public class LeilaoTestes
     {
+
+        [Fact]
+        public void LeilaoComTresClientes()
+        {
+            var leilao = new Leilao("Van Gogh");
+            var homer = new Interessada(nome: "Homer Simpson", leilao: leilao);
+            var marge = new Interessada("Marge Simpson", leilao);
+            var lisa = new Interessada("Lisa Simpson", leilao);
+
+            leilao.RecebeLance(homer, 800);
+            leilao.RecebeLance(marge, 900);
+            leilao.RecebeLance(lisa, 950);
+            leilao.RecebeLance(homer, 1000);
+            leilao.RecebeLance(marge, 1100);
+            leilao.RecebeLance(lisa, 1200);
+
+            leilao.TerminaPregao();
+
+            Console.WriteLine("Leilão com vários lances");
+            // Assert
+            var valorEsperado = 1200;
+            var valorObtido = leilao.Ganhador.Valor;
+
+            Assert.Equal(valorEsperado, valorObtido);
+            Assert.Equal(lisa, leilao.Ganhador.Cliente);
+        }
+
+
+        [Fact]
+        public void LeilaoLancesOrdenadosPorValor()
+        {
+            // Arrange - Cenário de entrada
+            var leilao = new Leilao("Van Gogh");
+            var homer = new Interessada(nome: "Homer Simpson", leilao: leilao);
+            var marge = new Interessada("Marge Simpson", leilao);
+
+            leilao.RecebeLance(homer, 800);
+            leilao.RecebeLance(marge, 900);
+            leilao.RecebeLance(marge, 950);
+            leilao.RecebeLance(homer, 1000);
+            leilao.RecebeLance(marge, 1100);
+            leilao.RecebeLance(marge, 1200);
+
+            // Act - Método sob teste
+            leilao.TerminaPregao();
+
+            Console.WriteLine("Leilão com vários lances");
+            // Assert
+            var valorEsperado = 1200;
+            var valorObtido = leilao.Ganhador.Valor;
+
+            Assert.Equal(valorEsperado, valorObtido);
+        }
+
         [Fact]
         public void LeilaoComApenasUmLance()
         {
