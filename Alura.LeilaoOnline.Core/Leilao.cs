@@ -32,7 +32,7 @@ namespace Alura.LeilaoOnline.Core
             //Ganhador = _lances.Max();
 
             // Usando Linq
-            Ganhador = _lances.OrderBy(l => l.Valor).Last();
+            Ganhador = Lances.DefaultIfEmpty(new Lance(null, 0)).OrderBy(l => l.Valor).LastOrDefault();
         }
     }
 }

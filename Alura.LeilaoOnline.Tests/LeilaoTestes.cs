@@ -12,6 +12,8 @@ namespace Alura.LeilaoOnline.Tests
         [Fact]
         public void LeilaoComTresClientes()
         {
+            // Arrange - Cenário de entrada
+            // Dado leilão com três clientes e lances realizados por eles
             var leilao = new Leilao("Van Gogh");
             var homer = new Interessada(nome: "Homer Simpson", leilao: leilao);
             var marge = new Interessada("Marge Simpson", leilao);
@@ -24,10 +26,16 @@ namespace Alura.LeilaoOnline.Tests
             leilao.RecebeLance(marge, 1100);
             leilao.RecebeLance(lisa, 1200);
 
+
+            // Act - Método sob teste
+            // Quando o pregão/leilão termina 
             leilao.TerminaPregao();
 
             Console.WriteLine("Leilão com vários lances");
+            
             // Assert
+            // Então o valor esperado é o maior valor ofertado pelo cliente
+            // O cliente ganhador é o que ofertou o maior lance
             var valorEsperado = 1200;
             var valorObtido = leilao.Ganhador.Valor;
 
@@ -105,6 +113,18 @@ namespace Alura.LeilaoOnline.Tests
             Assert.Equal(valorEsperado, valorObtido);
 
             
+        }
+
+        [Fact]
+        public void LeilaoSemLances()
+        {
+            var leilao = new Leilao("Van Gogh");
+            leilao.TerminaPregao();
+
+            var valorEsperado = 0;
+            var valorObtido = leilao.Ganhador.Valor;
+
+            Assert.Equal(valorEsperado, valorObtido);
         }
 
     }
