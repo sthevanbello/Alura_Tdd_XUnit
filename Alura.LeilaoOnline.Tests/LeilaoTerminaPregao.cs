@@ -20,6 +20,7 @@ namespace Alura.LeilaoOnline.Tests
             var leilao = new Leilao("Van Gogh");
             var homer = new Interessada(nome: "Homer Simpson", leilao: leilao);
 
+            leilao.IniciaPregao();
 
             foreach (var valor in ofertas)
             {
@@ -45,7 +46,9 @@ namespace Alura.LeilaoOnline.Tests
         [Fact]
         public void RetornaZeroDadoLeilaoComPeloMenosUmValor()
         {
+
             var leilao = new Leilao("Van Gogh");
+            leilao.IniciaPregao();
             leilao.TerminaPregao();
 
             var valorEsperado = 0;

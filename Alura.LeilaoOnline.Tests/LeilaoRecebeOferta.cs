@@ -38,6 +38,8 @@ namespace Alura.LeilaoOnline.Tests
             var leilao = new Leilao("Van Gogh");
             var homer = new Interessada("Homer Simpson", leilao);
 
+            leilao.IniciaPregao();
+
             foreach (var valor in ofertas)
             {
                 leilao.RecebeLance(homer, valor);
