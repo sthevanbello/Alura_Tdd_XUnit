@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Alura.LeilaoOnline.Tests
 {
-    public class LeilaoRecebeOferta
+    public class LeilaoRecebeLance
     {
         //[Fact]
         //public void NaoPermiteNovosLancesDadoLeilaoFinalizado()
